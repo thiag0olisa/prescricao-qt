@@ -1,0 +1,203 @@
+/* Conteúdo final e definitivo para o ficheiro style.css */
+
+:root {
+    --primary-color: #0056b3;
+    --border-color: #ddd;
+    --background-light: #f9f9f9;
+    --text-color: #333;
+    --text-muted: #6c757d;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 20px;
+    color: var(--text-color);
+    background-color: #e9ecef;
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+header, footer {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 20px 0;
+}
+
+section {
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+h1 { color: var(--text-color); }
+h2, h3, h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+form div {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+label, strong {
+    flex-basis: 200px;
+    font-weight: 600;
+    color: #495057;
+}
+
+input, select, textarea {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
+}
+
+.search-container { position: relative; }
+.suggestions-list {
+    position: absolute; top: 100%; left: 200px; right: 0;
+    background-color: white; border: 1px solid var(--border-color); border-top: none;
+    max-height: 200px; overflow-y: auto; z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.suggestion-item { padding: 10px; cursor: pointer; }
+.suggestion-item:hover { background-color: var(--background-light); }
+hr { border: 0; border-top: 1px solid #eee; margin: 30px 0; }
+.hidden { display: none; }
+
+#print-button {
+    display: block; width: 200px; margin: 20px auto; padding: 12px;
+    background-color: #28a745; color: white; border: none;
+    border-radius: 5px; cursor: pointer; font-size: 1em; transition: background-color 0.2s;
+}
+#print-button:hover { background-color: #218838; }
+
+
+/* --- NOVO LAYOUT PROFISSIONAL DA PRESCRIÇÃO --- */
+#prescricao-container {
+    padding: 1cm;
+    background: white;
+    border: 1px solid #aaa;
+    font-size: 9pt;
+}
+
+#prescricao-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+#prescricao-header-logo { font-weight: bold; font-size: 1.1em; }
+#prescricao-header-title { font-size: 1.4em; font-weight: bold; text-align: center; flex-grow: 1; }
+#prescricao-header-info { text-align: right; font-size: 0.9em; }
+
+#prescricao-paciente {
+    border: 1px solid #aaa;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Layout de 2 colunas */
+    gap: 5px 15px;
+}
+#prescricao-paciente p { margin: 0; }
+#prescricao-paciente strong { width: auto; font-weight: bold; }
+
+#prescricao-body h4 {
+    font-size: 1.1em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #e9ecef;
+    padding: 5px;
+    border-radius: 4px;
+    border-bottom: none;
+}
+
+#prescricao-footer {
+    margin-top: 40px;
+    text-align: center;
+    page-break-inside: avoid; /* Evita que o rodapé quebre na impressão */
+}
+#prescricao-footer .assinatura {
+    display: inline-block;
+    border-top: 1px solid black;
+    width: 350px;
+    margin-top: 50px;
+    padding-top: 5px;
+}
+
+/* ESTILO DA TABELA PROFISSIONAL (A MUDANÇA MAIS IMPORTANTE) */
+#resultado-protocolo table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+#resultado-protocolo th, #resultado-protocolo td {
+    border: none; /* Remove todas as bordas */
+    border-bottom: 1px solid #ddd; /* Adiciona apenas a linha inferior */
+    padding: 6px 4px; /* Padding vertical reduzido */
+    text-align: left;
+    vertical-align: middle;
+}
+#resultado-protocolo th {
+    border-bottom-width: 2px; /* Linha do cabeçalho mais grossa */
+    border-bottom-color: #333;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+}
+.horario-aprazamento {
+    border: 1px dotted #ccc; /* Borda pontilhada para indicar que é um campo de entrada */
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 2px;
+    width: 100px;
+}
+
+
+/* --- ESTILOS DE IMPRESSÃO FINAIS --- */
+@media print {
+    body { margin: 0; padding: 0; background-color: #fff; }
+    body > header, body > main > section#interfacePrincipal, body > footer, #print-button {
+        display: none !important;
+    }
+    main, section#resultado-protocolo {
+        display: block !important;
+        visibility: visible !important;
+        border: none; box-shadow: none; padding: 0; margin: 0;
+    }
+    @page {
+        size: A4;
+        margin: 1.5cm;
+    }
+    #prescricao-container {
+        border: none; box-shadow: none; font-size: 9pt; padding: 0;
+    }
+    .horario-aprazamento {
+        border: none;
+    }
+    .horario-aprazamento::-webkit-calendar-picker-indicator {
+        display: none;
+    }
+}
